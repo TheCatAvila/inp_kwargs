@@ -1,0 +1,10 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+inp_kwargs/__init__.py
+inp_kwargs/inp_kwargs.py
+inp_kwargs.egg-info/PKG-INFO
+inp_kwargs.egg-info/SOURCES.txt
+inp_kwargs.egg-info/dependency_links.txt
+inp_kwargs.egg-info/top_level.txt

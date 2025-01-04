@@ -1,3 +1,25 @@
+Metadata-Version: 2.1
+Name: inp-kwargs
+Version: 0.1.1
+Summary: A library for easy input validation with kwargs
+Home-page: https://github.com/TheCatAvila/inp_kwargs.git
+Author: Diego Ávila
+Author-email: thecatavila@gmail.com
+License: UNKNOWN
+Keywords: input validation,kwargs,python
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 # inp_kwargs
 **Easily validate user inputs with Python, no hassle required!**
 
@@ -76,3 +98,4 @@ pip install inp_kwargs
 
 ## License
 MIT License. See the LICENSE file for more details.
+

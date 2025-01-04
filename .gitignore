@@ -1,1 +1,8 @@
+inp_kwargs/__pycache__
 tests/__pycache__
+
+# Ignorar el archivo .env
+.env
+
+# Ignorar el archivo upload.py
+upload.py

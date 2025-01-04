@@ -1,0 +1,5 @@
+# Excluir el archivo .env
+exclude .env
+
+# Excluir el archivo upload.py
+exclude upload.py
