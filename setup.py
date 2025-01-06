@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='inp_kwargs',
-    version='0.1.1',
+    version='1.0.0',
     packages=find_packages(),
     description='A library for easy input validation with kwargs',
     long_description=open('README.md').read(),
