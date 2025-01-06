@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: inp-kwargs
-Version: 0.1.1
+Version: 1.0.1
 Summary: A library for easy input validation with kwargs
 Home-page: https://github.com/TheCatAvila/inp_kwargs.git
 Author: Diego Ávila
@@ -23,7 +23,7 @@ License-File: LICENSE
 # inp_kwargs
 **Easily validate user inputs with Python, no hassle required!**
 
-A Python library for easy input validation using kwargs. This library helps to easily validate inputs such as integers, strings, and more, without needing to write complex validation logic.
+A Python library for easy input validation using kwargs. This library helps to easily validate inputs such as integers, strings, and more, without needing to write complex validation logic. Additionally, these functions prevent the program from crashing due to invalid inputs, ensuring a robust and user-friendly experience.
 
 ## Example
 
@@ -32,70 +32,113 @@ A Python library for easy input validation using kwargs. This library helps to e
 ```python
 from inp_kwargs import input_int
 
+# Basic integer validation
+# Ensures the program won't crash even if the user enters invalid data (e.g., a string).
+test = input_int("Enter a number: ")
+print(f"You entered: {test}")
+
 # Request a number between 1 and 100
-number = input_int("Enter a number between 1 and 100: ", 
-                   error_txt="Error: You have to input an integer.",
-                   min_value=1, 
-                   error_min="Error: The number must be greater than or equal to 1.",
-                   max_value=100, 
-                   error_max="Error: The number must be less than or equal to 100.")
+number = input_int("Enter a number between 1 and 100: ",
+                   min_value=1,
+                   max_value=100)
 
 print(f"You entered: {number}")
 
-# Request a number between 1 and 100 without custom error messages
-number = input_int("Enter a number: ", min_value=1, max_value=100)
+# Request a number with custom error messages
+number = input_int("Enter a number: ",
+                   min_value=1,
+                   max_value=100,
+                   min_value_error_message="Error: Must be >= 1.",
+                   max_value_error_message="Error: Must be <= 100.")
 print(f"You entered: {number}")
-
 ```
 
-# `input_int` Function Validations
+## Available Functions
+### 1. `input_int`
+   Validate integer inputs with customizable criteria.
 
-The `input_int` function supports the following validation options:
+   #### Parameters:
+   - **min_value** (*int*, optional): Minimum value allowed.
+   - **max_value** (*int*, optional): Maximum value allowed.
+   - **range** (*list*, optional): Restrict input to a specific range of values.
+   - **allowed_values** (*list*, optional): Accept only specific values.
+   - **even** (*bool*, optional): Ensure the number is even.
+   - **odd** (*bool*, optional): Ensure the number is odd.
+   - **multiple_of** (*int*, optional): Validate input is a multiple of the given number.
+   - **type_error_message** (*str*, optional): Error message for invalid type.
+   - **clear_console** (*bool*, optional): Clears the console after each invalid input.
 
-### 1. **Minimum Value** (`min_value`)
-   - Ensures the input is greater than or equal to the specified minimum value.
-   - **Usage**: `min_value=10`
+   #### Example:
+   ```python
+   from inp_kwargs import input_int
 
-### 2. **Maximum Value** (`max_value`)
-   - Ensures the input is less than or equal to the specified maximum value.
-   - **Usage**: `max_value=100`
+   number = input_int("Enter a number: ", min_value=1, max_value=10, even=True)
+   print(f"Validated number: {number}")
+   ```
 
-### 3. **Range** (`range`)
-   - Ensures the input is in the specified range of values.
-   - **Usage**: `range=[10, 20, 30]`
+---
 
-### 4. **Allowed Values** (`allowed_values`)
-   - Ensures the input matches one of the allowed values.
-   - **Usage**: `allowed_values=[5, 10, 15]`
+### 2. `input_float`
+   Validate float inputs with customizable criteria.
 
-### 5. **Even Number** (`even`)
-   - Ensures the input is an even number.
-   - **Usage**: `even=True`
+   #### Parameters:
+   Similar to `input_int`, but for float values.
 
-### 6. **Odd Number** (`odd`)
-   - Ensures the input is an odd number.
-   - **Usage**: `odd=True`
+   #### Example:
+   ```python
+   from inp_kwargs import input_float
 
-### 7. **Multiple of** (`multiple_of`)
-   - Ensures the input is a multiple of a specified number.
-   - **Usage**: `multiple_of=5`
+   number = input_float("Enter a decimal number: ", min_value=0.5, max_value=9.9)
+   print(f"Validated float: {number}")
+   ```
 
-### 8. **Type Error Message** (`type_error_message`)
-   - Customizes the error message when the input is not a valid integer.
-   - **Usage**: `type_error_message="Invalid input!"`
+---
+
+### 3. `input_str`
+   Validate string inputs with customizable criteria.
+
+   #### Parameters:
+   - **strip** (*bool*, optional): Remove leading and trailing spaces.
+   - **min_length** (*int*, optional): Minimum string length.
+   - **max_length** (*int*, optional): Maximum string length.
+   - **allowed_characters** (*str*, optional): Restrict characters in input.
+   - **pattern** (*str*, optional): Validate input using a regex pattern.
+   - **clear_console** (*bool*, optional): Clears the console after each invalid input.
+   - **strip_error_message** (*str*, optional): Message when string is empty after trimming.
+   - **min_length_error_message** (*str*, optional): Error message for short strings.
+   - **max_length_error_message** (*str*, optional): Error message for long strings.
+
+   #### Example:
+   ```python
+   from inp_kwargs import input_str
+
+   text = input_str("Enter a word: ", min_length=3, max_length=8, strip=True, allowed_characters="abcdefghijklmnopqrstuvwxyz")
+   print(f"Validated string: {text}")
+   ```
+
+---
+
+### Function Dictionary
+| Function Name | Purpose                        | Input Type |
+|---------------|--------------------------------|------------|
+| `input_int`   | Validate integer inputs        | Integer    |
+| `input_float` | Validate float inputs          | Float      |
+| `input_str`   | Validate string inputs         | String     |
 
 ## Features
-- Validate integer inputs with custom error messages.
-- Set minimum and maximum value constraints.
-- Simple and reusable functions for input validation.
-
+- Customizable validation for integers, floats, and strings.
+- Supports custom error messages or default messages for ease of use.
+- Clears the console between attempts for a clean interface.
+- Handles common validation needs such as ranges, patterns, and allowed values.
 
 ## Installation
-You can install inp_kwargs directly from PyPI:
+You can install `inp_kwargs` directly from PyPI:
 ```bash
 pip install inp_kwargs
 ```
 
 ## License
 MIT License. See the LICENSE file for more details.
+
+
 

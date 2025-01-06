@@ -6,3 +6,9 @@ tests/__pycache__
 
 # Ignorar el archivo upload.py
 upload.py
+
+# For upload
+
+#rm -r dist/*
+#python setup.py sdist bdist_wheel
+#python upload.py

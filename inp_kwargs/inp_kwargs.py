@@ -136,5 +136,3 @@ def validate_string(prompt, **kwargs):
 
 def input_str(prompt, **kwargs):
     return validate_string(prompt, **kwargs)
-
-test = input_int("Enter a number: ")
