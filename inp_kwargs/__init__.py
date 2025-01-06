@@ -1,1 +1,1 @@
-from .inp_kwargs import input_int
+from .inp_kwargs import input_int, input_float, input_str
